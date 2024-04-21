@@ -4,147 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sticky Notes</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Kalam:wght@300;400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Pacifico&display=swap" rel="stylesheet">
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: 0;
-        }
-        #wrapper{
-            display: flex;
-            font-family: "Caveat","Kalam";
-        }
-        #leftSide{
-            width: 50%;
-            height: 100%;
-            padding: 10rem 5rem;
-            background-color: aqua;
-        }
-        #rightSide{
-            width: 50%;
-            height: 100%;
-            padding: 2rem 5rem;
-            text-align: center;
-        }
-        #noteText{
-            display: flex;
-            align-items: center;
-        }
-        #color{
-            text-align: center;
-            padding: 0 1rem;
-        }
-        #button{
-            border-radius: 4rem;
-            color: white;
-            background-color: brown;
-            padding: 1rem 3rem;
-            font-family: "Caveat";
-            font-weight: bolder;
-            font-size: 1.5rem;
-            margin-top: 3rem;
-            box-shadow: 0.2rem 0.5rem 1rem 0.1rem aquamarine;
-        }
-        #textarea{
-            box-shadow: 0.2rem 0.5rem 1rem 0.3rem gray;
-            border-radius: 0.4rem;
-            padding: 1.5rem;
-            font-size: 0.6rem;
-        }
-        #leftSide #buttonDiv{
-            margin: 0 auto;
-            width: 40%;
-        }
-        .note .close{
-            position: absolute;
-            top: 4px;
-            right: 4px;
-            cursor: pointer;
-            box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);
-            
-        }
-        .note{
-            border-radius: 5px;
-            position: relative;
-            padding: 5px;
-            max-width: 250px;
-            min-width: 200px;
-            box-shadow: 2px 2px 3px 4px rgba(0,0,0,0.3);
-            margin: 10px;
-        }
-        #rightSide .textAreaNote{
-            display: flex;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="wrapper">
         <div id="leftSide">
-            <div id="noteText">
-                <div id="note">
-                    <textarea id="textarea" name="" cols="50" rows="15" placeholder="//Write a note here" required></textarea><br>
-                </div>
-                <div id="color">
-                    <label for="">Background Color</label><br><input id="bg" type="color"><br>
-                    <label for="">Text Color</label><br><input id="text" type="color"><br>
-                </div>
+            <div>
+                <textarea name="" id="" cols="60" rows="10" placeholder="// Write Your Notes"></textarea>
             </div>
-            <div id="buttonDiv">
-                <button id="button">Add Note</button>
+            <div id="buttons">
+                <div id="btnDiv">
+                    <label for="">Background Color </label><input type="color" id="bgColor" value="#000000"><br>
+                    <label for="">Text Color </label><input type="color" id="textColor" value="#ffffff">
+                </div>
+                <div>
+                    <button>Add Note</button>
+                </div>
             </div>
         </div>
-        <div  id="rightSide">
-            <div><h2>Your Notes</h2></div>
-            <div class="textAreaNote">
-
-            </div>
-
+        <div id="rightSide">
+            <h2>Your Notes</h2>
+            <div class="textAreaNote"></div>
         </div>
     </div>
     <script>
-        const button = document.querySelector("button")
+        const btn = document.querySelector("button")
         const textarea = document.querySelector("textarea")
-        const bgColor = document.querySelector("#bg")
-        const textColor = document.querySelector("#text")
-        const rightnote = document.querySelector(".textAreaNote")
+        const bgColor = document.getElementById("bgColor")
+        const textColor = document.getElementById("textColor")
+        const rightNoteDiv = document.getElementsByClassName("textAreaNote")[0]
 
-        button.addEventListener("click", createStickyNotes);
+        btn.addEventListener("click", createStickyNotes)
 
         function createStickyNotes(){
             const text = textarea.value
-            if()
-            const stickyDiv = document.createElement("Div");
-            stickyDiv.innerText = text;
-            stickyDiv.classList.add("note")
-            
-            const cross =document.createElement("span");
-            cross.innerHTML = '&times';
-            cross.classList.add("close")
-            cross.addEventListener("click",removeStickyNote)
-            stickyDiv.append(cross);
+            if(text.trim().length === 0){
+                alert("Enter some Text")
+            }
+            else{ 
+                const stickyDiv = document.createElement("div")
+                stickyDiv.innerText = text
+                stickyDiv.classList.add("note")
 
-            stickyDiv.style.backgroundColor = bgColor.value;
-            stickyDiv.style.Color = textColor.value;
-            
-            rightnote.append(stickyDiv);
+                const cross = document.createElement("span")
+                cross.innerHTML = "&times";
+                cross.addEventListener("click", removeElement)
+                cross.classList.add("close")
+                stickyDiv.append(cross)
 
-            textarea.value = "";
+                stickyDiv.style.backgroundColor = bgColor.value
+                stickyDiv.style.color = textColor.value
+
+                rightNoteDiv.append(stickyDiv);
+                textarea.value = "";   
+            }
         }
-
-        
-        function removeStickyNote(evet){
-            event.target.parentElement.remove();
+        function removeElement(evt){
+            evt.target.parentElement.remove();
         }
-
-
     </script>
 </body>
 </html>

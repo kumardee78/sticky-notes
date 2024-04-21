@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+#wrapper{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+#rightSide, #leftSide{
+    width: 50%;
+    text-align: center;
+    font-family: "kalam";
+}
+#leftSide{
+    padding-top: 4rem;
+    background-image: url("tower.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 2rem;
+}
+button{
+    color: white;
+    background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a, #fbb03b);
+    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+    padding: 0.5rem 1.8rem;
+    margin: 0.7rem 0;
+    border-radius: 2.5rem;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    border-color: transparent;
+    cursor: pointer;
+}
+#btnDiv{
+    padding: 1.5rem;
+    font-weight: 700;
+}
+textarea{
+    border-radius: 0.8rem;
+    padding: 1.5rem 1.5rem;
+    box-shadow: 0.2rem 0.5rem 1rem 0.3rem gray;
+    font-weight: bolder;
+}
+#rightSide{
+    color: white;
+    padding-top: 0.3rem;
+    padding-left: 2rem;
+    font-size: 2rem;
+    overflow-y: scroll;
+    background-image: url("jaredd-craig-HH4WBGNyltc-unsplash.jpg");
+    background-size: cover;
+}
+#rightSide .textAreaNote{
+    display: flex;
+    flex-direction: start;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+.note .close{
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);
+}
+.note{
+    border-radius: 5px;
+    position: relative;
+    padding: 5px;
+    max-width: 250px;
+    min-width: 200px;
+    height: 130px;
+    box-shadow: 2px 2px 3px 4px rgba(0,0,0,0.3);
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
